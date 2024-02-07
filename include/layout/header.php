@@ -1,6 +1,4 @@
 <?php
-
-
     $q="SELECT * FROM tbl_categories";
     $categories=$db->query($q);
 ?>
@@ -12,7 +10,9 @@
     <nav class="d-inline-flex mt-2 mt-md-0 me-md-auto">
         <?php if($categories -> rowCount()>0): ?>
         <?php foreach ($categories as $item): ?>
-            <a class="fw-bold me-3 py-2 link-body-emphasis text-decoration-none" href="#"><?= $item['title']; ?></a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none
+            <?= (isset($_GET['category'])) && $item['id'] == $_GET['category'] ? 'fw-bold' : '' ?>"
+               href="index.php?category=<?= $item['id']; ?>"><?= $item['title']; ?></a>
         <?php endforeach; ?>
         <?php endif; ?>
     </nav>

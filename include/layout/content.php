@@ -33,6 +33,12 @@ $posts=$db->query("SELECT * FROM tbl_posts ORDER BY id DESC");
             </div>
         </div>
             <?php endforeach ?>
+            <?php else : ?>
+                <div class="col">
+                    <div class="alert alert-danger">
+                        مقاله ای یافت نشد ....
+                    </div>
+                </div>
             <?php endif ?>
 </div>
 </div>

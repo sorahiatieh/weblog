@@ -25,7 +25,7 @@
             <?php if($categories->rowCount()>0): ?>
             <?php foreach($categories as $item): ?>
             <li class="list-group-item">
-                <a class="link-body-emphasis text-decoration-none" href="#"><?= $item['title']; ?></a>
+                <a class="link-body-emphasis text-decoration-none" href="index.php?category=<?= $item['id']; ?>"><?= $item['title']; ?></a>
             </li>
             <?php endforeach; ?>
             <?php endif; ?>

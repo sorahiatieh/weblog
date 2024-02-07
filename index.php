@@ -2,8 +2,13 @@
     include "./include/config.php";
     include "./include/db.php";
 
-    $posts=$db->query("SELECT * FROM tbl_posts ORDER BY id DESC");
-
+    if(isset($_GET['category'])){
+     $categoryId=$_GET['category'];
+     $posts=$db->prepare("SELECT * FROM tbl_posts WHERE category_Id= :id ORDER BY id DESC");
+     $posts->execute(['id'=>$categoryId]);
+    }else {
+        $posts = $db->query("SELECT * FROM tbl_posts ORDER BY id DESC");
+    }
     //echo "<pre>";
      //print_r($posts->fetch());
 
