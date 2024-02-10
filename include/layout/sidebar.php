@@ -7,9 +7,9 @@
     <div class="card">
         <div class="card-body">
             <p class="fw-bold fs-6">جستجو در وبلاگ</p>
-            <form action="#">
+            <form action="search.php" method="get">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="جستجو ..."/>
+                    <input type="text" name="search" class="form-control" placeholder="جستجو ..."/>
                     <button class="btn btn-secondary" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
