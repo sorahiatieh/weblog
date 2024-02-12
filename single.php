@@ -60,6 +60,7 @@ if (isset($_GET['post'])) {
                         <!-- Comment Section -->
                         <div class="col">
                             <!-- Comment Form -->
+
                             <div class="card">
                                 <div class="card-body">
                                     <p class="fw-bold fs-5">
@@ -84,59 +85,36 @@ if (isset($_GET['post'])) {
 
                             <hr class="mt-4" />
                             <!-- Comment Content -->
-                            <p class="fw-bold fs-6">تعداد کامنت : 3</p>
-
-                            <div class="card bg-light-subtle mb-3">
+                            <?php
+                            $postId=$post['id'];
+                            $comments=$db->prepare("SELECT * FROM tbl_comments WHERE post_id= :id AND status= '1'");
+                            $comments->execute(['id' =>$postId]);
+                            ?>
+                            <p class="fw-bold fs-6">تعداد کامنت : <?= $comments->rowCount() ?></p>
+                            <?php if($comments->rowCount() > 0): ?>
+                            <?php foreach ($comments as $comment): ?>
+                                <div class="card bg-light-subtle mb-3">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <img src="./assets/images/profile.png" width="45" height="45" alt="user-profle" />
 
                                         <h5 class="card-title me-2 mb-0">
-                                            محمد صالحی
+                                           <?= $comment['name'] ?>
                                         </h5>
                                     </div>
 
                                     <p class="card-text pt-3 pr-3">
-                                        لورم ایپسوم متن ساختگی با تولید
-                                        سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است.
+                                        <?= $comment['comment'] ?>
                                     </p>
                                 </div>
                             </div>
-
-                            <div class="card bg-light-subtle mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="./assets/images/profile.png" width="45" height="45" alt="user-profle" />
-
-                                        <h5 class="card-title me-2 mb-0">
-                                            متین سیدی
-                                        </h5>
-                                    </div>
-
-                                    <p class="card-text pt-3 pr-3">
-                                        لورم ایپسوم متن ساختگی با تولید
-                                        سادگی نامفهوم از صنعت چاپ
-                                    </p>
+                            <?php endforeach; ?>
+                            <?php  else: ?>
+                                <div class="alert alert-danger">
+                                    نظری برای این مقاله ثبت نشده است....
                                 </div>
-                            </div>
+                            <?php endif; ?>
 
-                            <div class="card bg-light-subtle mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="./assets/images/profile.png" width="45" height="45" alt="user-profle" />
-
-                                        <h5 class="card-title me-2 mb-0">
-                                            زهرا عزیزی
-                                        </h5>
-                                    </div>
-
-                                    <p class="card-text pt-3 pr-3">
-                                        لورم ایپسوم متن ساختگی با تولید
-                                        سادگی
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
