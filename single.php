@@ -60,23 +60,47 @@ if (isset($_GET['post'])) {
                         <!-- Comment Section -->
                         <div class="col">
                             <!-- Comment Form -->
+                            <?php
+                                $message="";
+                                $invalidInputName="";
+                                $invalidInputComment="";
+
+                                if(isset($_POST['postComment'])){
+                                    if(empty(trim($_POST['name']))){
+                                        $invalidInputName="فیلد نام الزامیست.";
+                                    }elseif (empty(trim($_POST['comment']))){
+                                        $invalidInputComment="فیلد متن کامنت الزامیست.";
+                                    }else{
+                                        $name=$_POST['name'];
+                                        $comment=$_POST['comment'];
+
+                                        $commentInsert = $db->prepare("INSERT INTO tbl_comments (name, comment, post_id, status) VALUES (:name , :comment , :post_id , 0)");
+                                        $commentInsert->execute(['name' => $name, 'comment' => $comment, 'post_id' => $post['id']]);
+
+                                        $message="نظر شما با موفقیت ثبت شد بعد از تایید مدیریت نمایش داده می شود.";
+                                    }
+
+                                }
+                            ?>
 
                             <div class="card">
                                 <div class="card-body">
                                     <p class="fw-bold fs-5">
                                         ارسال کامنت
                                     </p>
-
-                                    <form>
+                                    <div class="form-text text-success"><?= $message; ?></div>
+                                    <form method="post">
                                         <div class="mb-3">
                                             <label class="form-label">نام</label>
-                                            <input type="text" class="form-control" />
+                                            <input type="text" name="name" class="form-control" />
+                                            <div class="form-text text-danger"><?= $invalidInputName; ?></div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">متن کامنت</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                                            <div class="form-text text-danger"><?= $invalidInputComment; ?></div>
                                         </div>
-                                        <button type="submit" class="btn btn-dark">
+                                        <button type="submit"  name="postComment" class="btn btn-dark">
                                             ارسال
                                         </button>
                                     </form>
