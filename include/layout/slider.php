@@ -1,8 +1,19 @@
 <?php
+
 $sliders = $db->query("SELECT * FROM tbl_posts_slider");
+
+// echo "<pre>";
+// print_r($sliders->fetchAll());
+
+// foreach($sliders as $slider) {
+//     // print_r($slider['post_id']);
+//     $postId = $slider['post_id'];
+//     $post = $db->query("SELECT * FROM posts WHERE id = $postId");
 
 //     echo "<pre>";
 //     print_r($post->fetch());
+// }
+
 ?>
 
 <!-- Slider Section -->
@@ -16,13 +27,13 @@ $sliders = $db->query("SELECT * FROM tbl_posts_slider");
 
         <div class="carousel-inner rounded">
             <?php if ($sliders->rowCount() > 0) : ?>
-                <?php foreach ($sliders as $item) : ?>
+                <?php foreach ($sliders as $slider) : ?>
                     <?php
-                    $postId = $item['post_id'];
+                    $postId = $slider['post_id'];
                     $post = $db->query("SELECT * FROM tbl_posts WHERE id = $postId")->fetch();
                     ?>
-                    <div class="carousel-item overlay carousel-height <?= ($item['active']) ? 'active' : '' ?>">
-                        <img src="./uploads/posts/<?= $post['image'] ?>" class="d-block w-100" alt="<?= $post['title'] ?>" />
+                    <div class="carousel-item overlay carousel-height <?= ($slider['active']) ? 'active' : '' ?>">
+                        <img src="./uploads/posts/<?= $post['image'] ?>" class="d-block w-100" alt="post-image" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?= $post['title'] ?></h5>
                             <p>

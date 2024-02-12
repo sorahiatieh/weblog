@@ -1,3 +1,3 @@
 <?php
-    $db=new PDO(DNS,DB_USER,DB_PASS);
-?>
+
+$db = new PDO(DNS, DB_USER, DB_PASS);
