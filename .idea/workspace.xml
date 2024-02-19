@@ -6,6 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ef963467-0818-40f6-a0ae-a5a0c87096c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/fonts/Vazir.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/fonts/Vazir.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/fonts/Vazir.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/fonts/Vazir.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/images/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/include/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/include/db.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/include/layout/footer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/include/layout/header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/include/layout/sidebar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +74,7 @@
       <workItem from="1707726226842" duration="2203000" />
       <workItem from="1707748919201" duration="1981000" />
       <workItem from="1708249732191" duration="540000" />
+      <workItem from="1708327744025" duration="1521000" />
     </task>
     <servers />
   </component>

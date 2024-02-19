@@ -1,3 +1,8 @@
+<?php
+    include (__DIR__."/../config.php");
+    include (__DIR__."/../db.php");
+?>
+
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 <head>
