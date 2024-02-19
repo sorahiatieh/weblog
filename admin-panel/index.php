@@ -1,6 +1,28 @@
 <?php
     include "./include/layout/header.php";
 
+    if(isset($_GET['entity']) &&
+    isset($_GET['action']) &&
+    isset($_GET['id'])){
+        $entity=$_GET['entity'];
+        $action=$_GET['action'];
+        $id=$_GET['id'];
+
+        switch ($entity){
+            case "post":
+                $query=$db->prepare("DELETE FROM tbl_posts WHERE id= :id");
+                break;
+            case "comment":
+                $query=$db->prepare("DELETE FROM tbl_comments WHERE id= :id");
+                break;
+            case "category":
+                $query=$db->prepare("DELETE FROM tbl_categories WHERE id= :id");
+                break;
+        }
+
+        $query->execute(['id' => $id]);
+    }
+
     $posts=$db->query("SELECT * FROM tbl_posts ORDER BY  id DESC LIMIT 5");
     $comments=$db->query("SELECT * FROM tbl_comments ORDER BY  id DESC LIMIT 5");
     $categories=$db->query("SELECT * FROM tbl_categories ORDER BY  id DESC");
@@ -41,7 +63,7 @@
                                         <td><?= $item['author']; ?></td>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-outline-dark">ویرایش</a>
-                                            <a href="#" class="btn btn-sm btn-outline-danger">حذف</a>
+                                            <a href="index.php?entity=post&action=delete&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-danger">حذف</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -79,7 +101,7 @@
                                         </td>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-outline-dark disabled">تایید شده</a>
-                                            <a href="#" class="btn btn-sm btn-outline-danger">حذف</a>
+                                            <a href="index.php?entity=comment&action=delete&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-danger">حذف</a>
                                         </td>
                                     </tr>
                                   <?php endforeach; ?>
@@ -113,7 +135,7 @@
                                         <td><?= $item['title']; ?></td>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-outline-dark">ویرایش</a>
-                                            <a href="#" class="btn btn-sm btn-outline-danger">حذف</a>
+                                            <a href="index.php?entity=category&action=delete&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-danger">حذف</a>
                                         </td>
                                     </tr>
                                 </tbody>
