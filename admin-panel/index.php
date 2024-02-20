@@ -8,17 +8,22 @@
         $action=$_GET['action'];
         $id=$_GET['id'];
 
-        switch ($entity){
-            case "post":
-                $query=$db->prepare("DELETE FROM tbl_posts WHERE id= :id");
-                break;
-            case "comment":
-                $query=$db->prepare("DELETE FROM tbl_comments WHERE id= :id");
-                break;
-            case "category":
-                $query=$db->prepare("DELETE FROM tbl_categories WHERE id= :id");
-                break;
+        if($action == "delete"){
+            switch ($entity){
+                case "post":
+                    $query=$db->prepare("DELETE FROM tbl_posts WHERE id= :id");
+                    break;
+                case "comment":
+                    $query=$db->prepare("DELETE FROM tbl_comments WHERE id= :id");
+                    break;
+                case "category":
+                    $query=$db->prepare("DELETE FROM tbl_categories WHERE id= :id");
+                    break;
+            }
+        }elseif ($action == "approve"){
+            $query=$db->prepare("UPDATE tbl_comments SET status='1' WHERE id= :id");
         }
+
 
         $query->execute(['id' => $id]);
     }
@@ -100,8 +105,13 @@
                                            <?= $item['comment']; ?>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-outline-dark disabled">تایید شده</a>
-                                            <a href="index.php?entity=comment&action=delete&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-danger">حذف</a>
+                                            <?php if($item['status']): ?>
+                                            <button class="btn btn-sm btn-outline-dark disabled">تایید شده</button>
+                                            <?php else: ?>
+                                                <a href="index.php?entity=comment&action=approve&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-info">در انتظار تایید</a>
+                                            <?php endif; ?>
+                                             <a href="index.php?entity=comment&action=delete&id=<?= $item['id']; ?>" class="btn btn-sm btn-outline-danger">حذف</a>
+
                                         </td>
                                     </tr>
                                   <?php endforeach; ?>
