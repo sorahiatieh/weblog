@@ -27,12 +27,12 @@ $sliders = $db->query("SELECT * FROM tbl_posts_slider");
 
         <div class="carousel-inner rounded">
             <?php if ($sliders->rowCount() > 0) : ?>
-                <?php foreach ($sliders as $slider) : ?>
+                <?php foreach ($sliders as $item) : ?>
                     <?php
-                    $postId = $slider['post_id'];
+                    $postId = $item['post_id'];
                     $post = $db->query("SELECT * FROM tbl_posts WHERE id = $postId")->fetch();
                     ?>
-                    <div class="carousel-item overlay carousel-height <?= ($slider['active']) ? 'active' : '' ?>">
+                    <div class="carousel-item overlay carousel-height <?= ($item['active']) ? 'active' : '' ?>">
                         <img src="./uploads/posts/<?= $post['image'] ?>" class="d-block w-100" alt="post-image" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?= $post['title'] ?></h5>

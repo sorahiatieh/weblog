@@ -27,9 +27,9 @@ $categories = $db->query($query);
         <div class="fw-bold fs-6 card-header">دسته بندی ها</div>
         <ul class="list-group list-group-flush p-0">
             <?php if ($categories->rowCount() > 0) : ?>
-                <?php foreach ($categories as $category) : ?>
+                <?php foreach ($categories as $item) : ?>
                     <li class="list-group-item">
-                        <a class="link-body-emphasis text-decoration-none" href="index.php?category=<?= $category['id'] ?>"><?= $category['title'] ?></a>
+                        <a class="link-body-emphasis text-decoration-none" href="index.php?category=<?= $item['id'] ?>"><?= $item['title'] ?></a>
                     </li>
                 <?php endforeach ?>
             <?php endif ?>
@@ -55,7 +55,7 @@ $categories = $db->query($query);
                     $name = $_POST['name'];
                     $email = $_POST['email'];
 
-                    $subscribeInsert = $db->prepare("INSERT INTO subscribers (name, email) VALUES (:name, :email)");
+                    $subscribeInsert = $db->prepare("INSERT INTO tbl_subscribers (name, email) VALUES (:name, :email)");
                     $subscribeInsert->execute(['name' => $name, 'email' => $email]);
 
                     $message = "عضویت شما با موفقیت انجام شد.";
