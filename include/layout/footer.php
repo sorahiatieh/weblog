@@ -2,10 +2,7 @@
 <footer class="text-center pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row flex-column">
                     <div>
-                        <p class="">
-                            کلیه حقوق محتوا این سایت متعلق به وب سایت webprog.io
-                            میباشد
-                        </p>
+                        <p class="">این یک سایت تمرینی در جهت ارتقای دانش فنی خودم میباشد.</p>    
                     </div>
                     <div>
                         <a href="#"
