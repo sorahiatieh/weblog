@@ -5,19 +5,9 @@
                         <p class="">این یک سایت تمرینی در جهت ارتقای دانش فنی خودم میباشد.</p>    
                     </div>
                     <div>
-                        <a href="#"
-                            ><i
-                                class="bi bi-telegram fs-3 text-secondary ms-2"
-                            ></i
-                        ></a>
-                        <a href="#"
-                            ><i
-                                class="bi bi-whatsapp fs-3 text-secondary ms-2"
-                            ></i
-                        ></a>
-                        <a href="#"
-                            ><i class="bi bi-instagram fs-3 text-secondary"></i
-                        ></a>
+                        <a href="https://t.me/missatiiii" target="_blank"><i class="bi bi-telegram fs-3 text-secondary ms-2"></i></a>
+                        <a href="https://www.wa.me/989120234153" target="_blank"><i class="bi bi-whatsapp fs-3 text-secondary ms-2"></i></a>
+                        <a href="https://www.instagram.com/missatisorahi" target="_blank"><i class="bi bi-instagram fs-3 text-secondary"></i></a>
                     </div>
                 </div>
             </footer>

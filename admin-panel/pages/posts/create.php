@@ -12,25 +12,38 @@ $invalidInputBody="";
 if(isset($_POST['addPost'])){
     if(empty(trim($_POST['title']))){
         $invalidInputTitle="فیلد عنوان الزامیست";
-    }elseif (empty(trim($_POST['author']))){
+    }if (empty(trim($_POST['author']))){
         $invalidInputAuthor="فیلد نویسنده الزامیست";
-    }elseif (empty(trim($_FILES['image']))){
+    }if (empty(trim($_FILES['image']['name']))){
         $invalidInputImage="فیلد تصویر الزامیست";
-    }elseif (empty(trim($_POST['body']))){
+    }if (empty(trim($_POST['body']))){
         $invalidInputImage="فیلد متن الزامیست";
     }
+
+
+    if(!empty(trim($_POST['title'])) && !empty(trim($_POST['author'])) && !empty(trim($_FILES['image']['name'])) && !empty(trim($_POST['body']))){
+        $title=$_POST['title'];
+        $author=$_POST['author'];
+        $body=$_POST['body'];
+        $categoryId=$_POST['categoryId'];
+        $nameImage=time(). "-".$_FILES['image']['name'];
+        $tmpName=$_FILES['image']['tmp_name'];
+
+        if(move_uploaded_file($tmpName,"../../../uploads/posts/$nameImage")){
+            $postInsert=$db->prepare("INSERT INTO tbl_posts (title, author, category_id, body, image) VALUES (:title, :author, :category_id, :body, :image)");
+            $postInsert->execute(['title' =>$title , 'author' =>$author , 'category_id' =>$categoryId , 'body' =>$body , 'image' =>$nameImage]);
+
+            header("Location: index.php");
+            exit();
+        }else{
+            echo "upload Error";
+        }
+    }
 }
+
+
 ?>
 
-
-<body>
-<header class="navbar sticky-top bg-secondary flex-md-nowrap p-0 shadow-sm">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5 text-white" href="index.html">پنل ادمین</a>
-
-    <button class="ms-2 nav-link px-3 text-white d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-        <i class="bi bi-justify-left fs-2"></i>
-    </button>
-</header>
 
 <div class="container-fluid">
     <div class="row">
@@ -60,7 +73,7 @@ if(isset($_POST['addPost'])){
 
                     <div class="col-12 col-sm-6 col-md-4">
                         <label class="form-label">دسته بندی مقاله</label>
-                        <select class="form-select">
+                        <select name="categoryId" class="form-select">
                             <?php if($categories->rowCount() >0):?>
                                 <?php foreach ($categories as $item): ?>
                                      <option value="<?= $item['id'] ?>"><?= $item['title'] ?></option>
