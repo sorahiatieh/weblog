@@ -29,8 +29,6 @@ if (isset($_GET['post'])) {
                         $categoryId = $post['category_id'];
                         $postCategory = $db->query("SELECT * FROM tbl_categories WHERE id = $categoryId")->fetch();
                         ?>
-
-                        <!-- Post Section -->
                         <div class="col">
                             <div class="card">
                                 <img src="./uploads/posts/<?= $post['image'] ?>" class="card-img-top" alt="post-image" />
