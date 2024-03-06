@@ -50,7 +50,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                                     <th><?= $item['id'] ?></th>
                                     <td><?= $item['title'] ?></td>
                                     <td>
-                                        <a href="./edit.php" class="btn btn-sm btn-outline-dark">ویرایش</a>
+                                        <a href="./edit.php?id=<?= $item['id']  ?>" class="btn btn-sm btn-outline-dark">ویرایش</a>
                                         <a href="index.php?action=delete&id=<?= $item['id'] ?>" class="btn btn-sm btn-outline-danger">حذف</a>
                                     </td>
                                 </tr>
