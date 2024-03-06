@@ -20,14 +20,14 @@ include "../../include/layout/header.php";
 
                     <!-- Posts -->
                     <div class="mt-4">
-                        <form class="row g-4">
+                        <form method="post" class="row g-4">
                             <div class="col-12 col-sm-6 col-md-4">
                                 <label class="form-label">عنوان دسته بندی</label>
-                                <input type="text" class="form-control" />
+                                <input type="text" name="title" class="form-control" />
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" class="btn btn-dark">
+                                <button type="submit" name="addCategory" class="btn btn-dark">
                                      ایجاد
                                 </button>
                             </div>
