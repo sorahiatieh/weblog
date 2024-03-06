@@ -1,6 +1,21 @@
 <?php
 include "../../include/layout/header.php";
 
+ $invalidInputTitle="";
+
+if(isset($_POST['addCategory'])){
+        if(empty(trim($_POST['title']))){
+                $invalidInputTitle="فیلد عنوان الزامیست";
+        }
+        if(!empty(trim($_POST['title']))){
+              $title=$_POST['title'];
+                $categoryInsert=$db->prepare("INSERT INTO tbl_categories (title) VALUES (:title)");
+                $categoryInsert->execute(['title' => $title]);
+
+                header("Location : index.php");
+                exit();
+        }
+}
 ?>
 
         <div class="container-fluid">
