@@ -39,6 +39,7 @@ if(isset($_POST['addCategory'])){
                             <div class="col-12 col-sm-6 col-md-4">
                                 <label class="form-label">عنوان دسته بندی</label>
                                 <input type="text" name="title" class="form-control" />
+                              <div class="form-text text-danger"><?= $invalidInputTitle ?></div>
                             </div>
 
                             <div class="col-12">
