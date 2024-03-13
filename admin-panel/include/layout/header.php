@@ -1,10 +1,20 @@
 <?php
+session_start();
+
 include(__DIR__ . "/../config.php");
 include(__DIR__ . "/../db.php");
 
-// var_dump($_SERVER['REQUEST_URI']);
+
 $path = $_SERVER['REQUEST_URI'];
-// var_dump(str_contains($path , 'pages'));
+if(!isset($_SESSION['email'])){
+    if(str_contains($path,'pages')){
+        header("Location: ../auth/login.php?err_msg=ابتدا باید وارد سایت شوید");
+
+    }else{
+        header("Location: ./pages/auth/login.php?err_msg=ابتدا باید وارد سایت شوید");
+    }
+    exit();
+}
 
 ?>
 
