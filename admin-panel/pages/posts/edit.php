@@ -50,7 +50,7 @@ if (isset($_POST['editPost'])) {
         }
 
 
-        header("Location:index.php");
+        header("Location: index.php");
         exit();
     }
 }

@@ -9,7 +9,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
 
     $query->execute(['id' => $id]);
 
-    header("location :index.php");
+    header("location: index.php");
     exit();
 }
 ?>

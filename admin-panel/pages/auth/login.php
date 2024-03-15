@@ -26,11 +26,11 @@ if(isset($_POST['login'])){
 
         if($user-> rowCount() == 1){
             $_SESSION['email'] = $email;
-            header("Location:../../index.php");
+            header("Location: ../../index.php");
             exit();
         }
 
-        header("Location:login.php?err_msg=کاربری با این اطلاعات یافت نشد");
+        header("Location: login.php?err_msg=کاربری با این اطلاعات یافت نشد");
         exit();
     }
 }

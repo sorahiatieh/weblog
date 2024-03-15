@@ -15,7 +15,7 @@ if(isset($_POST['editCategory'])){
                 $categoryUpdate=$db->prepare("UPDATE tbl_categories SET title= :title WHERE id= :id");
                 $categoryUpdate->execute(['title' => $title , 'id' => $categoryId]);
 
-                header("Location : index.php");
+                header("Location: index.php");
                 exit();
         }
 }

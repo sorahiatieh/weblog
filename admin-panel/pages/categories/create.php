@@ -12,7 +12,7 @@ if(isset($_POST['addCategory'])){
                 $categoryInsert=$db->prepare("INSERT INTO tbl_categories (title) VALUES (:title)");
                 $categoryInsert->execute(['title' => $title]);
 
-                header("Location : index.php");
+                header("Location: index.php");
                 exit();
         }
 }
